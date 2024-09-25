@@ -1,16 +1,17 @@
 import { Slot } from 'expo-router'
 import '../global.css'
+import { ReduxProvider } from '@/store/ReduxProvider'
 import {
-	Roboto_400Regular,
-	Roboto_700Bold,
+	NunitoSans_400Regular,
+	NunitoSans_700Bold,
 	useFonts,
-} from '@expo-google-fonts/roboto'
+} from '@expo-google-fonts/nunito-sans'
 import { ActivityIndicator, View } from 'react-native'
 
 export default function LayoutMain() {
 	const [fontsLoaded] = useFonts({
-		Roboto_400Regular,
-		Roboto_700Bold,
+		NunitoSans_400Regular,
+		NunitoSans_700Bold,
 	})
 
 	if (!fontsLoaded) {
@@ -21,5 +22,9 @@ export default function LayoutMain() {
 		)
 	}
 
-	return <Slot />
+	return (
+		<ReduxProvider>
+			<Slot />
+		</ReduxProvider>
+	)
 }
